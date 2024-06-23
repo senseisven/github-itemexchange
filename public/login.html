@@ -33,51 +33,50 @@
 </html>
 
 
-    <!-- Main content -->
     <div class="container">
-        <h1>Welcome to Item Exchange</h1>
-        <p>Trade items with people in your community.</p>
-    </div>
-
-    <script src="js/script.js"></script>
-</body>
-</html>
-
-
-    <!-- Edit Profile Content -->
-    <div class="container">
-        <h1>Edit Profile</h1>
-        <form id="edit-profile-form">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" value="">
-            </div>
-            <div class="form-group">
-                <label for="bio">Bio:</label>
-                <textarea id="bio" name="bio" rows="4"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Save Changes</button>
+        <h1>Login</h1>
+        <form id="login-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
         </form>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Item Exchange. All rights reserved.</p>
-            <nav>
-                <ul>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </nav>
-            <div class="social">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
         </div>
     </footer>
-    <script src="js/script.js"></script>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const result = await response.json();
+                if (result.token) {
+                    localStorage.setItem('token', result.token);
+                    localStorage.setItem('username', result.username);
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Login failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
 </body>
 </html>

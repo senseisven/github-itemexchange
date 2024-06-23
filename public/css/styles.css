@@ -1,10 +1,15 @@
 /* General styles */
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4; /* Light gray background */
     color: #333; /* Dark gray text color */
-    margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
 }
 
@@ -12,13 +17,14 @@ body {
 header {
     background: #333; /* Dark gray background */
     color: #fff; /* White text color */
-    padding: 10px 0; /* Padding for header */
+    padding: 5px 0; /* Reduce padding for header */
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; /* Center align items vertically */
+    height: 50px; /* Set a specific height for the header */
 }
 
 header .logo a {
@@ -32,21 +38,27 @@ header nav ul {
     list-style: none;
     display: flex;
     gap: 1em;
-}
-
-header nav ul li {
-    margin: 0;
+    align-items: center; /* Center align items vertically */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    padding-right: 2em; /* Adjust this value if needed to space from the right */
 }
 
 header nav ul li a {
     color: #fff; /* White text color */
     text-decoration: none; /* Remove underline */
+    display: flex;
+    align-items: center; /* Center align the text and icon */
+    padding: 5px 0; /* Adjust padding to vertically center the text */
 }
 
 header nav ul li a.btn-blue {
     background-color: #007bff; /* Blue background color for the upload button */
     padding: 10px 20px;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 header nav ul li a.btn-blue:hover {
@@ -132,8 +144,6 @@ header nav ul li a.btn-blue:hover {
     text-align: center;
     text-decoration: none;
     color: #333;
-    
-
 }
 
 .category img {
@@ -147,8 +157,6 @@ header nav ul li a.btn-blue:hover {
     margin: 10px 0;
     font-size: 18px;
 }
-
-
 
 /* Items container styles */
 .items-container {
@@ -187,14 +195,20 @@ header nav ul li a.btn-blue:hover {
     padding-left: 0; /* No padding needed */
 }
 
-
-
+/* Title alignment styles */
+.category-title {
+    text-align: left; /* Align text to the left */
+    margin-left: calc((100% - 960px) / 2); /* Center the title with the items container */
+    font-size: 2em; /* Adjust as necessary */
+    padding: 20px 0; /* Add some padding for spacing */
+}
 
 /* Footer styles */
 footer {
     background: #333;
     color: #fff;
     padding: 1em 0;
+    margin-top: auto; /* Push the footer to the bottom */
 }
 
 footer .container {
@@ -209,10 +223,6 @@ footer nav ul {
     display: flex;
     gap: 1em;
     padding: 0;
-    margin: 0;
-}
-
-footer nav ul li {
     margin: 0;
 }
 
@@ -265,4 +275,98 @@ footer .social a:hover {
     .item {
         width: calc(50% - 10px); /* Two items per row on smaller screens */
     }
+}
+
+/* Item details container styles */
+.item-details-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.item-details-container .img-container {
+    width: 587px;
+    height: 486px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-details-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.item-details-container h2 {
+    font-size: 2em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.item-details-container p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.item-details-container p strong {
+    font-weight: bold;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Button styles for consistency */
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
 }

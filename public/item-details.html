@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item Exchange - Item Details</title>
+    <title>Item Exchange - Home</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dyHOnslutLJv55vYZX88/l8Ej50K1C/gDJDCvGZwYkP8TRrI2n50D1e/2VWwvv1Q3pahmq4Ow0g4Z3EnK2VGiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="js/script.js" defer></script>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
@@ -16,22 +17,44 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html"><i class="fas fa-home"></i><span>Home</span></a></li>
-                    <li><a href="about.html"><i class="fas fa-info-circle"></i><span>About</span></a></li>
-                    <li><a href="howitworks.html"><i class="fas fa-cogs"></i><span>How It Works</span></a></li>
-                    <li><a href="signin.html" id="signin-link"><i class="fas fa-sign-in-alt"></i><span>Sign In</span></a></li>
+                    <li><a href="login.html" id="login-link"><i class="fas fa-sign-in-alt"></i><span>Login</span></a></li>
                     <li><a href="register.html" id="register-link"><i class="fas fa-user-plus"></i><span>Register</span></a></li>
                     <li><a href="upload.html" id="upload-link" class="btn-blue"><i class="fas fa-upload"></i><span>Upload</span></a></li>
                     <li><a href="account.html" id="account-link" style="display: none;"><i class="fas fa-user"></i><span id="username-display">Account</span></a></li>
-                    <li><a href="#" id="signout-link" style="display: none;"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a></li>
+                    <li><a href="#" id="logout-link" style="display: none;"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div class="container">
-        <div id="item-details-container"></div>
-    </div>
+    <!-- Rest of your page content -->
+
+</body>
+</html>
+
+
+        <div class="container">
+            <div id="item-details-container" class="item-details-container"></div>
+            <button id="exchange-request-btn" class="btn">Propose Exchange</button>
+        </div>
+
+        <!-- Modal for Exchange Request -->
+        <div id="exchange-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Propose an Exchange</h2>
+                <form id="exchange-form">
+                    <label for="user-items">Select an item to exchange:</label>
+                    <select id="user-items">
+                        <!-- Dynamically populated with user's items -->
+                    </select>
+                    <label for="exchange-message">Message (optional):</label>
+                    <textarea id="exchange-message" rows="4" cols="50"></textarea>
+                    <button type="submit" class="btn">Send Request</button>
+                </form>
+            </div>
+        </div>
+    </div> <!-- End of wrapper -->
 
     <footer>
         <div class="container">
@@ -62,8 +85,10 @@
                     const item = await response.json();
                     const itemDetailsContainer = document.getElementById('item-details-container');
                     itemDetailsContainer.innerHTML = `
+                        <div class="img-container">
+                            <img src="${item.image}" alt="${item.itemName}">
+                        </div>
                         <h2>${item.itemName}</h2>
-                        <img src="${item.image}" alt="${item.itemName}" style="width: 100%; height: auto;">
                         <p><strong>Description:</strong> ${item.description}</p>
                         <p><strong>Desired Item:</strong> ${item.desiredItem}</p>
                     `;
@@ -74,6 +99,68 @@
             } else {
                 document.getElementById('item-details-container').innerHTML = '<p>Item not found.</p>';
             }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('exchange-modal');
+            const btn = document.getElementById('exchange-request-btn');
+            const span = document.getElementsByClassName('close')[0];
+            const form = document.getElementById('exchange-form');
+            const userItemsSelect = document.getElementById('user-items');
+
+            btn.onclick = async () => {
+                modal.style.display = 'block';
+
+                // Fetch user's items to populate the select dropdown
+                try {
+                    const response = await fetch('/user-items'); // Adjust the endpoint as needed
+                    const userItems = await response.json();
+
+                    userItemsSelect.innerHTML = userItems.map(item => `
+                        <option value="${item._id}">${item.itemName}</option>
+                    `).join('');
+                } catch (error) {
+                    console.error('Error fetching user items:', error);
+                }
+            }
+
+            span.onclick = () => {
+                modal.style.display = 'none';
+            }
+
+            window.onclick = (event) => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+
+            // Handle form submission
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const selectedItem = userItemsSelect.value;
+                const message = document.getElementById('exchange-message').value;
+                const urlParams = new URLSearchParams(window.location.search);
+                const itemId = urlParams.get('id');
+
+                try {
+                    const response = await fetch('/exchange-request', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ selectedItem, message, itemId }),
+                    });
+                    const result = await response.json();
+                    if (result.success) {
+                        alert('Exchange request sent successfully!');
+                        modal.style.display = 'none';
+                    } else {
+                        alert('Error sending exchange request.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
         });
     </script>
 </body>

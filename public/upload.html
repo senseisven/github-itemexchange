@@ -5,6 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Item</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -15,20 +69,16 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="howitworks.html">How It Works</a></li>
-                    <li><a href="signin.html" id="signin-link">Sign In</a></li>
-                    <li><a href="register.html" id="register-link">Register</a></li>
-                    <li><a href="upload.html" id="upload-link">Upload</a></li>
-                    <li><a href="account.html" id="account-link" style="display:none;">Account</a></li>
-                    <li><a href="#" id="signout-link" style="display:none;">Sign Out</a></li>
+                    <li><a href="login.html" id="login-link"><i class="fas fa-sign-in-alt"></i><span>Login</span></a></li>
+                    <li><a href="register.html" id="register-link"><i class="fas fa-user-plus"></i><span>Register</span></a></li>
+                    <li><a href="upload.html" id="upload-link" class="btn-blue"><i class="fas fa-upload"></i><span>Upload</span></a></li>
+                    <li><a href="account.html" id="account-link" style="display: none;"><i class="fas fa-user"></i><span id="username-display">Account</span></a></li>
+                    <li><a href="#" id="logout-link" style="display: none;"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Upload Form -->
     <div class="container">
         <h1>Upload Item</h1>
         <form action="/upload" method="POST" enctype="multipart/form-data">
@@ -63,11 +113,12 @@
                 <label for="item-image">Image:</label>
                 <input type="file" id="item-image" name="item-image" required>
             </div>
-            <button type="submit">Upload</button>
+            <div class="form-group">
+                <button type="submit">Upload</button>
+            </div>
         </form>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Item Exchange. All rights reserved.</p>
@@ -78,12 +129,8 @@
                     <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </nav>
-            <div class="social">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
         </div>
     </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>

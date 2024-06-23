@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const multer = require('multer');
 const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
@@ -35,16 +34,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'public/uploads/');
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname));
-    }
-});
-const upload = multer({ storage: storage });
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -65,7 +54,7 @@ app.get('/item-details.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'item-details.html'));
 });
 
-app.post('/upload', upload.single('item-image'), async (req, res) => {
+app.post('/upload', async (req, res) => {
     const { 'item-name': itemName, description, category, 'desired-item': desiredItem, email } = req.body;
     const image = req.file ? `/uploads/${req.file.filename}` : '';
 
@@ -102,6 +91,20 @@ app.get('/item/:id', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch item details' });
     }
+});
+
+app.get('/user-items', async (req, res) => {
+    const userEmail = req.query.email; // Fetch user email from request (modify as needed)
+    const userItems = await Item.find({ email: userEmail });
+    res.json(userItems);
+});
+
+app.post('/exchange-request', async (req, res) => {
+    const { selectedItem, message, itemId } = req.body;
+    // Implement logic to handle exchange request (e.g., save request to database, notify item owner)
+    // For demonstration, we'll simply log the details
+    console.log('Exchange Request:', { selectedItem, message, itemId });
+    res.json({ success: true, message: 'Exchange request sent successfully!' });
 });
 
 app.post('/register', async (req, res) => {
