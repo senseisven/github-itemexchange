@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Item</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">ItemExchange</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="howitworks.html">How It Works</a></li>
+                    <li><a href="signin.html" id="signin-link">Sign In</a></li>
+                    <li><a href="register.html" id="register-link">Register</a></li>
+                    <li><a href="upload.html" id="upload-link">Upload</a></li>
+                    <li><a href="account.html" id="account-link" style="display:none;">Account</a></li>
+                    <li><a href="#" id="signout-link" style="display:none;">Sign Out</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Upload Form -->
+    <div class="container">
+        <h1>Upload Item</h1>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="item-name">Item Name:</label>
+                <input type="text" id="item-name" name="item-name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="electronics">Electronics</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="books">Books</option>
+                    <option value="furniture">Furniture</option>
+                    <option value="sports">Sports</option>
+                    <option value="toys">Toys</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="automotive">Automotive</option>
+                    <option value="jewelry">Jewelry</option>
+                    <option value="tools">Tools</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="desired-item">Desired Item:</label>
+                <input type="text" id="desired-item" name="desired-item" required>
+            </div>
+            <div class="form-group">
+                <label for="item-image">Image:</label>
+                <input type="file" id="item-image" name="item-image" required>
+            </div>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Item Exchange. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
