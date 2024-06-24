@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Exchange - Account</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dyHOnslutLJv55vYZX88/l8Ej50K1C/gDJDCvGZwYkP8TRrI2n50D1e/2VWwvv1Q3pahmq4Ow0g4Z3EnK2VGiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">ItemExchange</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="login.html" id="login-link"><i class="fas fa-sign-in-alt"></i><span>Login</span></a></li>
+                    <li><a href="register.html" id="register-link"><i class="fas fa-user-plus"></i><span>Register</span></a></li>
+                    <li><a href="upload.html" id="upload-link" class="btn-blue"><i class="fas fa-upload"></i><span>Upload</span></a></li>
+                    <li><a href="account.html" id="account-link" style="display: none;"><i class="fas fa-user"></i><span id="username-display">Account</span></a></li>
+                    <li><a href="#" id="logout-link" style="display: none;"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Account Content -->
+    <div class="container">
+        <h1>Account Information</h1>
+        <p>Email: <span id="account-email"></span></p>
+        <p>Username: <span id="username-display"></span></p>
+        <button id="edit-profile-button" class="btn btn-primary">Edit Profile</button>
+        <button id="my-posts-button" class="btn btn-primary">My Posts</button>
+        <div id="user-posts-container"></div> <!-- Container for user posts -->
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Item Exchange. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -17,19 +17,21 @@ body {
 header {
     background: #333; /* Dark gray background */
     color: #fff; /* White text color */
-    padding: 5px 0; /* Reduce padding for header */
+    padding: 10px 0; /* Increase padding for header */
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center; /* Center align items vertically */
-    height: 50px; /* Set a specific height for the header */
+    max-width: 1200px; /* Ensure the container spans the full width */
+    margin: 0 auto; /* Center the container */
+    padding: 0 20px; /* Add padding to the sides */
 }
 
 header .logo a {
     color: #fff; /* White text color */
-    font-size: 1.5em; /* Larger font size */
+    font-size: 2em; /* Increase font size for logo text */
     font-weight: bold; /* Bold text */
     text-decoration: none; /* Remove underline */
 }
@@ -38,10 +40,13 @@ header nav ul {
     list-style: none;
     display: flex;
     gap: 1em;
-    align-items: center; /* Center align items vertically */
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
-    padding-right: 2em; /* Adjust this value if needed to space from the right */
+    align-items: center; /* Center align items vertically */
+}
+
+header nav ul li {
+    margin: 0;
 }
 
 header nav ul li a {
@@ -65,6 +70,7 @@ header nav ul li a.btn-blue:hover {
     background-color: #0056b3; /* Darker blue on hover */
     color: #fff; /* Ensure text color stays white */
 }
+
 
 /* Hero section styles */
 .hero {
@@ -369,4 +375,42 @@ footer .social a:hover {
 
 .btn:hover {
     background-color: #0056b3;
+}
+/* Adjusted Container styles */
+.container.upload {
+    max-width: 65%; /* Make the container 20% smaller */
+    width: 100%; /* Ensure it spans the full width */
+    margin: 0 auto; /* Center the container */
+    padding: 40px; /* Add padding for the upload container */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* Account page styles */
+.account-info {
+    background-color: #fff; /* White background for the account info */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.account-info p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.account-info span {
+    color: #333; /* Dark gray text color for the username and email */
+}
+
+/* Adjusted Container styles */
+.container.upload {
+    max-width: 80%; /* Make the container 20% smaller */
+    width: 100%; /* Ensure it spans the full width */
+    margin: 0 auto; /* Center the container */
+    padding: 40px; /* Add padding for the upload container */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

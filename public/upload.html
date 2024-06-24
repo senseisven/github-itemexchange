@@ -12,10 +12,14 @@
             padding: 0;
             background-color: #f9f9f9;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+        .container.upload {
+            max-width: 65%; /* Make the container 20% smaller */
+            width: 100%; /* Ensure it spans the full width */
+            margin: 0 auto; /* Center the container */
+            padding: 40px; /* Increase padding */
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
             text-align: center;
@@ -79,7 +83,7 @@
         </div>
     </header>
 
-    <div class="container">
+    <div class="container upload">
         <h1>Upload Item</h1>
         <form action="/upload" method="POST" enctype="multipart/form-data">
             <div class="form-group">
@@ -115,7 +119,11 @@
             </div>
             <div class="form-group">
                 <button type="submit">Upload</button>
+        
             </div>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+
+            
         </form>
     </div>
 

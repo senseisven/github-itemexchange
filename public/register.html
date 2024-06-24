@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item Exchange - Home</title>
+    <title>Register</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dyHOnslutLJv55vYZX88/l8Ej50K1C/gDJDCvGZwYkP8TRrI2n50D1e/2VWwvv1Q3pahmq4Ow0g4Z3EnK2VGiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="js/script.js" defer></script>
+    <script src="js/forms.js" defer></script>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
@@ -27,27 +25,10 @@
         </div>
     </header>
 
-    <!-- Rest of your page content -->
-
-</body>
-</html>
-
-
-    <!-- Main content -->
-    <div class="container">
-        <h1>Welcome to Item Exchange</h1>
-        <p>Trade items with people in your community.</p>
-    </div>
-
-    <script src="js/script.js"></script>
-</body>
-</html>
-
-
-    <!-- Register Form -->
     <div class="container">
         <h1>Register</h1>
         <form id="register-form">
+            <div id="register-error" style="display:none; color: red;"></div>
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
@@ -64,11 +45,10 @@
                 <label for="confirm-password">Confirm Password:</label>
                 <input type="password" id="confirm-password" name="confirm-password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn">Register</button>
         </form>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Item Exchange. All rights reserved.</p>
@@ -86,6 +66,5 @@
             </div>
         </div>
     </footer>
-    <script src="js/script.js"></script>
 </body>
 </html>

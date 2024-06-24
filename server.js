@@ -2,8 +2,20 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
+const multer = require('multer');
 const app = express();
 const port = 3000;
+
+// Configure Multer for file uploads
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/uploads/');
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + '-' + file.originalname);
+    }
+});
+const upload = multer({ storage: storage });
 
 mongoose.connect('mongodb://localhost/itemexchange', {
     useNewUrlParser: true,
@@ -23,7 +35,7 @@ const Item = mongoose.model('Item', itemSchema);
 
 const userSchema = new mongoose.Schema({
     username: String,
-    email: String,
+    email: { type: String, unique: true },
     password: String
 });
 
@@ -54,8 +66,9 @@ app.get('/item-details.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'item-details.html'));
 });
 
-app.post('/upload', async (req, res) => {
-    const { 'item-name': itemName, description, category, 'desired-item': desiredItem, email } = req.body;
+app.post('/upload', upload.single('item-image'), async (req, res) => {
+    const { 'item-name': itemName, description, category, 'desired-item': desiredItem } = req.body;
+    const email = req.body.email || req.user.email; // Assuming req.user contains the authenticated user's details
     const image = req.file ? `/uploads/${req.file.filename}` : '';
 
     const item = new Item({
@@ -79,8 +92,15 @@ app.get('/items', async (req, res) => {
 
 app.get('/user-posts', async (req, res) => {
     const userEmail = req.query.email;
-    const userPosts = await Item.find({ email: userEmail });
-    res.json(userPosts);
+    try {
+        console.log(`Fetching posts for email: ${userEmail}`);
+        const userPosts = await Item.find({ email: userEmail });
+        console.log(`Found posts: ${JSON.stringify(userPosts)}`);
+        res.json(userPosts);
+    } catch (error) {
+        console.error('Error fetching user posts:', error);
+        res.status(500).json({ error: 'Failed to fetch user posts' });
+    }
 });
 
 app.get('/item/:id', async (req, res) => {
@@ -94,24 +114,26 @@ app.get('/item/:id', async (req, res) => {
 });
 
 app.get('/user-items', async (req, res) => {
-    const userEmail = req.query.email; // Fetch user email from request (modify as needed)
+    const userEmail = req.query.email;
     const userItems = await Item.find({ email: userEmail });
     res.json(userItems);
 });
 
 app.post('/exchange-request', async (req, res) => {
     const { selectedItem, message, itemId } = req.body;
-    // Implement logic to handle exchange request (e.g., save request to database, notify item owner)
-    // For demonstration, we'll simply log the details
     console.log('Exchange Request:', { selectedItem, message, itemId });
     res.json({ success: true, message: 'Exchange request sent successfully!' });
 });
 
 app.post('/register', async (req, res) => {
     const { email, password, username } = req.body;
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-        return res.status(400).send('User already exists');
+    const existingEmail = await User.findOne({ email });
+    if (existingEmail) {
+        return res.status(400).send('User already exists with this email address');
+    }
+    const existingUsername = await User.findOne({ username });
+    if (existingUsername) {
+        return res.status(400).send('User already exists with this username');
     }
     const user = new User({ email, password, username });
     await user.save();
@@ -122,7 +144,7 @@ app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email, password });
     if (user) {
-        res.json({ message: 'Login successful', token: 'loggedIn', username: user.username });
+        res.json({ message: 'Login successful', token: 'loggedIn', username: user.username, email: user.email });
     } else {
         res.status(400).send('Invalid credentials');
     }

@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item Exchange - Home</title>
+    <title>Login</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dyHOnslutLJv55vYZX88/l8Ej50K1C/gDJDCvGZwYkP8TRrI2n50D1e/2VWwvv1Q3pahmq4Ow0g4Z3EnK2VGiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="js/script.js" defer></script>
+    <script src="js/forms.js" defer></script>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
@@ -27,56 +25,38 @@
         </div>
     </header>
 
-    <!-- Rest of your page content -->
-
-</body>
-</html>
-
-
     <div class="container">
         <h1>Login</h1>
+        <div id="login-error" style="display:none; color: red;"></div>
         <form id="login-form">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
+            <div class="form-group">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
         </form>
     </div>
 
     <footer>
         <div class="container">
             <p>&copy; 2024 Item Exchange. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
     </footer>
-
-    <script>
-        document.getElementById('login-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            try {
-                const response = await fetch('/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email, password }),
-                });
-
-                const result = await response.json();
-                if (result.token) {
-                    localStorage.setItem('token', result.token);
-                    localStorage.setItem('username', result.username);
-                    window.location.href = 'index.html';
-                } else {
-                    alert('Login failed');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        });
-    </script>
 </body>
 </html>
