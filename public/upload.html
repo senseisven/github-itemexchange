@@ -1,144 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Upload Item</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-        .container.upload {
-            max-width: 65%; /* Make the container 20% smaller */
-            width: 100%; /* Ensure it spans the full width */
-            margin: 0 auto; /* Center the container */
-            padding: 40px; /* Increase padding */
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-        }
-        form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: calc(100% - 22px);
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .form-group textarea {
-            resize: vertical;
-        }
-        .form-group button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        .form-group button:hover {
-            background-color: #218838;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+      }
+      .container.upload {
+        max-width: 65%; /* Make the container 20% smaller */
+        width: 100%; /* Ensure it spans the full width */
+        margin: 0 auto; /* Center the container */
+        padding: 40px; /* Increase padding */
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+      }
+      form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: calc(100% - 22px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .form-group textarea {
+        resize: vertical;
+      }
+      .form-group button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+      .form-group button:hover {
+        background-color: #218838;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">ItemExchange</a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="login.html" id="login-link"><i class="fas fa-sign-in-alt"></i><span>Login</span></a></li>
-                    <li><a href="register.html" id="register-link"><i class="fas fa-user-plus"></i><span>Register</span></a></li>
-                    <li><a href="upload.html" id="upload-link" class="btn-blue"><i class="fas fa-upload"></i><span>Upload</span></a></li>
-                    <li><a href="account.html" id="account-link" style="display: none;"><i class="fas fa-user"></i><span id="username-display">Account</span></a></li>
-                    <li><a href="#" id="logout-link" style="display: none;"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
-                </ul>
-            </nav>
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">ItemExchange</a>
         </div>
+        <nav>
+          <ul>
+            <li>
+              <a href="login.html" id="login-link"
+                ><i class="fas fa-sign-in-alt"></i><span>Login</span></a
+              >
+            </li>
+            <li>
+              <a href="register.html" id="register-link"
+                ><i class="fas fa-user-plus"></i><span>Register</span></a
+              >
+            </li>
+            <li>
+              <a href="upload.html" id="upload-link" class="btn-blue"
+                ><i class="fas fa-upload"></i><span>Upload</span></a
+              >
+            </li>
+            <li>
+              <a href="account.html" id="account-link" style="display: none"
+                ><i class="fas fa-user"></i
+                ><span id="username-display">Account</span></a
+              >
+            </li>
+            <li>
+              <a href="#" id="logout-link" style="display: none"
+                ><i class="fas fa-sign-out-alt"></i><span>Logout</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <div class="container upload">
-        <h1>Upload Item</h1>
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="item-name">Item Name:</label>
-                <input type="text" id="item-name" name="item-name" required>
-            </div>
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <textarea id="description" name="description" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="category">Category:</label>
-                <select id="category" name="category" required>
-                    <option value="electronics">Electronics</option>
-                    <option value="clothing">Clothing</option>
-                    <option value="books">Books</option>
-                    <option value="furniture">Furniture</option>
-                    <option value="sports">Sports</option>
-                    <option value="toys">Toys</option>
-                    <option value="beauty">Beauty</option>
-                    <option value="automotive">Automotive</option>
-                    <option value="jewelry">Jewelry</option>
-                    <option value="tools">Tools</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="desired-item">Desired Item:</label>
-                <input type="text" id="desired-item" name="desired-item" required>
-            </div>
-            <div class="form-group">
-                <label for="item-image">Image:</label>
-                <input type="file" id="item-image" name="item-image" required>
-            </div>
-            <div class="form-group">
-                <button type="submit">Upload</button>
-        
-            </div>
-            <form action="/upload" method="POST" enctype="multipart/form-data">
-
-            
-        </form>
+      <h1>Upload Item</h1>
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="item-name">Item Name:</label>
+          <input type="text" id="item-name" name="item-name" required />
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <select id="category" name="category" required>
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing</option>
+            <option value="books">Books</option>
+            <option value="furniture">Furniture</option>
+            <option value="sports">Sports</option>
+            <option value="toys">Toys</option>
+            <option value="beauty">Beauty</option>
+            <option value="automotive">Automotive</option>
+            <option value="jewelry">Jewelry</option>
+            <option value="tools">Tools</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="desired-item">Desired Item:</label>
+          <input type="text" id="desired-item" name="desired-item" required />
+        </div>
+        <div class="form-group">
+          <label for="item-images">Images:</label>
+          <input
+            type="file"
+            id="item-images"
+            name="item-images"
+            multiple
+            required
+          />
+        </div>
+        <div class="form-group">
+          <button type="submit">Upload</button>
+        </div>
+      </form>
     </div>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Item Exchange. All rights reserved.</p>
-            <nav>
-                <ul>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
+      <div class="container">
+        <p>&copy; 2024 Item Exchange. All rights reserved.</p>
+        <nav>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
     </footer>
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>

@@ -1,416 +1,453 @@
 /* General styles */
-body, html {
-    height: 100%;
-    margin: 0;
+body,
+html {
+  height: 100%;
+  margin: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Light gray background */
-    color: #333; /* Dark gray text color */
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; /* Light gray background */
+  color: #333; /* Dark gray text color */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 /* Header styles */
 header {
-    background: #333; /* Dark gray background */
-    color: #fff; /* White text color */
-    padding: 10px 0; /* Increase padding for header */
+  background: #333; /* Dark gray background */
+  color: #fff; /* White text color */
+  padding: 10px 0; /* Increase padding for header */
 }
 
 header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Center align items vertically */
-    max-width: 1200px; /* Ensure the container spans the full width */
-    margin: 0 auto; /* Center the container */
-    padding: 0 20px; /* Add padding to the sides */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center align items vertically */
+  max-width: 1200px; /* Ensure the container spans the full width */
+  margin: 0 auto; /* Center the container */
+  padding: 0 20px; /* Add padding to the sides */
 }
 
 header .logo a {
-    color: #fff; /* White text color */
-    font-size: 2em; /* Increase font size for logo text */
-    font-weight: bold; /* Bold text */
-    text-decoration: none; /* Remove underline */
+  color: #fff; /* White text color */
+  font-size: 2em; /* Increase font size for logo text */
+  font-weight: bold; /* Bold text */
+  text-decoration: none; /* Remove underline */
 }
 
 header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1em;
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-    align-items: center; /* Center align items vertically */
+  list-style: none;
+  display: flex;
+  gap: 1em;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  align-items: center; /* Center align items vertically */
 }
 
 header nav ul li {
-    margin: 0;
+  margin: 0;
 }
 
 header nav ul li a {
-    color: #fff; /* White text color */
-    text-decoration: none; /* Remove underline */
-    display: flex;
-    align-items: center; /* Center align the text and icon */
-    padding: 5px 0; /* Adjust padding to vertically center the text */
+  color: #fff; /* White text color */
+  text-decoration: none; /* Remove underline */
+  display: flex;
+  align-items: center; /* Center align the text and icon */
+  padding: 5px 0; /* Adjust padding to vertically center the text */
 }
 
 header nav ul li a.btn-blue {
-    background-color: #007bff; /* Blue background color for the upload button */
-    padding: 10px 20px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: #007bff; /* Blue background color for the upload button */
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 header nav ul li a.btn-blue:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    color: #fff; /* Ensure text color stays white */
+  background-color: #0056b3; /* Darker blue on hover */
+  color: #fff; /* Ensure text color stays white */
 }
-
 
 /* Hero section styles */
 .hero {
-    color: #fff;
-    text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), #888; /* Solid gray background with overlay */
-    padding: 60px 0;
+  color: #fff;
+  text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), #888; /* Solid gray background with overlay */
+  padding: 60px 0;
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin: 0;
+  font-size: 48px;
+  margin: 0;
 }
 
 .hero p {
-    font-size: 24px;
-    margin: 10px 0 20px;
+  font-size: 24px;
+  margin: 10px 0 20px;
 }
 
 .hero .buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
 }
 
 .hero .btn {
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #fff;
-    border: 1px solid #fff;
-    margin: 5px;
-    border-radius: 5px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #fff;
+  margin: 5px;
+  border-radius: 5px;
 }
 
 .hero .btn-primary {
-    background: #007bff;
+  background: #007bff;
 }
 
 .hero .btn-secondary {
-    background: #333;
+  background: #333;
 }
 
 /* Main content styles */
 .main-content {
-    background: #f0f0f0;
-    padding: 2em 0;
+  background: #f0f0f0;
+  padding: 2em 0;
 }
 
 .main-content .container {
-    text-align: center;
+  text-align: center;
 }
 
 .main-content h1 {
-    margin-bottom: 0.5em;
-    font-size: 2.5em;
+  margin-bottom: 0.5em;
+  font-size: 2.5em;
 }
 
 .main-content p {
-    margin-bottom: 1.5em;
-    font-size: 1.2em;
+  margin-bottom: 1.5em;
+  font-size: 1.2em;
 }
 
 /* Categories styles */
 .categories {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* Spread categories evenly */
-    gap: 10px; /* Gap between categories */
-    padding: 2em 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Spread categories evenly */
+  gap: 10px; /* Gap between categories */
+  padding: 2em 0;
 }
 
 .category {
-    background: none;
-    border: none;
-    border-radius: 5px;
-    width: calc(20% - 10px); /* Five items per row */
-    text-align: center;
-    text-decoration: none;
-    color: #333;
+  background: none;
+  border: none;
+  border-radius: 5px;
+  width: calc(20% - 10px); /* Five items per row */
+  text-align: center;
+  text-decoration: none;
+  color: #333;
 }
 
 .category img {
-    width: 100%;
-    height: 200px; /* Adjust height for consistency */
-    object-fit: cover; /* Ensure the image covers the container */
-    display: block;
+  width: 100%;
+  height: 200px; /* Adjust height for consistency */
+  object-fit: cover; /* Ensure the image covers the container */
+  display: block;
 }
 
 .category h3 {
-    margin: 10px 0;
-    font-size: 18px;
+  margin: 10px 0;
+  font-size: 18px;
 }
 
 /* Items container styles */
 .items-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center the items */
-    gap: 20px; /* Gap between items */
-    padding: 2em 0;
-    max-width: 960px; /* Adjusted width to fit four items per row */
-    margin: 0 auto; /* Center the items container */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the items */
+  gap: 20px; /* Gap between items */
+  padding: 2em 0;
+  max-width: 960px; /* Adjusted width to fit four items per row */
+  margin: 0 auto; /* Center the items container */
 }
 
 .item {
-    background: none;
-    border: none;
-    width: 220px; /* Consistent width */
-    height: auto; /* Adjust height automatically */
-    text-align: left;
-    text-decoration: none;
-    color: #333;
-    overflow: hidden;
-    cursor: pointer;
+  background: none;
+  border: none;
+  width: 220px; /* Consistent width */
+  height: auto; /* Adjust height automatically */
+  text-align: left;
+  text-decoration: none;
+  color: #333;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .item img {
-    width: 220px;
-    height: 300px; /* Adjust height to maintain aspect ratio */
-    object-fit: cover; /* Ensure the image covers the container */
-    display: block;
+  width: 220px;
+  height: 300px; /* Adjust height to maintain aspect ratio */
+  object-fit: cover; /* Ensure the image covers the container */
+  display: block;
 }
 
 .item h3 {
-    margin: 10px 0;
-    font-size: 18px;
-    text-align: left; /* Align the title to the left */
-    padding-left: 0; /* No padding needed */
+  margin: 10px 0;
+  font-size: 18px;
+  text-align: left; /* Align the title to the left */
+  padding-left: 0; /* No padding needed */
 }
 
 /* Title alignment styles */
 .category-title {
-    text-align: left; /* Align text to the left */
-    margin-left: calc((100% - 960px) / 2); /* Center the title with the items container */
-    font-size: 2em; /* Adjust as necessary */
-    padding: 20px 0; /* Add some padding for spacing */
+  text-align: left; /* Align text to the left */
+  margin-left: calc(
+    (100% - 960px) / 2
+  ); /* Center the title with the items container */
+  font-size: 2em; /* Adjust as necessary */
+  padding: 20px 0; /* Add some padding for spacing */
 }
 
 /* Footer styles */
 footer {
-    background: #333;
-    color: #fff;
-    padding: 1em 0;
-    margin-top: auto; /* Push the footer to the bottom */
+  background: #333;
+  color: #fff;
+  padding: 1em 0;
+  margin-top: auto; /* Push the footer to the bottom */
 }
 
 footer .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 footer nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1em;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 1em;
+  padding: 0;
+  margin: 0;
 }
 
 footer nav ul li a {
-    color: #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 
 footer .social a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 0.5em;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 0.5em;
 }
 
 footer .social a:hover {
-    color: #ccc;
+  color: #ccc;
 }
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
-    .hero {
-        height: 300px;
-    }
+  .hero {
+    height: 300px;
+  }
 
-    .hero h1 {
-        font-size: 32px;
-    }
+  .hero h1 {
+    font-size: 32px;
+  }
 
-    .hero p {
-        font-size: 18px;
-    }
+  .hero p {
+    font-size: 18px;
+  }
 
-    .hero .btn {
-        padding: 8px 16px;
-    }
+  .hero .btn {
+    padding: 8px 16px;
+  }
 
-    .main-content h1 {
-        font-size: 2em;
-    }
+  .main-content h1 {
+    font-size: 2em;
+  }
 
-    .main-content p {
-        font-size: 1em;
-    }
+  .main-content p {
+    font-size: 1em;
+  }
 
-    .main-content .btn {
-        padding: 0.5em 1em;
-    }
+  .main-content .btn {
+    padding: 0.5em 1em;
+  }
 
-    .category,
-    .item {
-        width: calc(50% - 10px); /* Two items per row on smaller screens */
-    }
+  .category,
+  .item {
+    width: calc(50% - 10px); /* Two items per row on smaller screens */
+  }
 }
 
 /* Item details container styles */
 .item-details-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .item-details-container .img-container {
-    width: 587px;
-    height: 486px;
-    margin: 0 auto 20px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 587px;
+  height: 486px;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .item-details-container img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .item-details-container h2 {
-    font-size: 2em;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    text-align: left;
+  font-size: 2em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: left;
 }
 
 .item-details-container p {
-    font-size: 1.2em;
-    line-height: 1.5;
-    margin-bottom: 10px;
-    text-align: left;
+  font-size: 1.2em;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  text-align: left;
 }
 
 .item-details-container p strong {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 /* Modal styles */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
 }
 
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* Button styles for consistency */
 .btn {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 /* Adjusted Container styles */
 .container.upload {
-    max-width: 65%; /* Make the container 20% smaller */
-    width: 100%; /* Ensure it spans the full width */
-    margin: 0 auto; /* Center the container */
-    padding: 40px; /* Add padding for the upload container */
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 65%; /* Make the container 20% smaller */
+  width: 100%; /* Ensure it spans the full width */
+  margin: 0 auto; /* Center the container */
+  padding: 40px; /* Add padding for the upload container */
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 /* Account page styles */
 .account-info {
-    background-color: #fff; /* White background for the account info */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+  background-color: #fff; /* White background for the account info */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
 .account-info p {
-    font-size: 1.2em;
-    margin: 10px 0;
+  font-size: 1.2em;
+  margin: 10px 0;
 }
 
 .account-info span {
-    color: #333; /* Dark gray text color for the username and email */
+  color: #333; /* Dark gray text color for the username and email */
 }
 
 /* Adjusted Container styles */
 .container.upload {
-    max-width: 80%; /* Make the container 20% smaller */
-    width: 100%; /* Ensure it spans the full width */
-    margin: 0 auto; /* Center the container */
-    padding: 40px; /* Add padding for the upload container */
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 80%; /* Make the container 20% smaller */
+  width: 100%; /* Ensure it spans the full width */
+  margin: 0 auto; /* Center the container */
+  padding: 40px; /* Add padding for the upload container */
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.user-posts-container .post {
+  width: 580px; /* Set the width of the post container */
+  height: 535px; /* Set the height of the post container */
+  overflow: hidden; /* Hide any overflow */
+  margin-bottom: 20px; /* Add some space between posts */
+  background-color: #fff; /* White background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex; /* Flexbox for alignment */
+  flex-direction: column; /* Vertical alignment */
+}
+
+.user-posts-container .post img {
+  width: 100%; /* Image takes full width of the container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Cover the container without stretching */
+  display: block;
+}
+
+.user-posts-container .post-content {
+  padding: 15px; /* Padding around the text */
+  text-align: center; /* Centered text */
+  flex-grow: 1; /* Allow text to grow */
+}
+
+.user-posts-container .post h3 {
+  margin: 10px 0; /* Space above and below */
+  font-size: 1.2em; /* Font size for the title */
+}
+
+.user-posts-container .post p {
+  margin: 5px 0; /* Space between paragraphs */
+  font-size: 0.9em; /* Font size for paragraphs */
+  color: #555; /* Text color */
 }

@@ -1,70 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
     <script src="js/forms.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">ItemExchange</a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="login.html" id="login-link"><i class="fas fa-sign-in-alt"></i><span>Login</span></a></li>
-                    <li><a href="register.html" id="register-link"><i class="fas fa-user-plus"></i><span>Register</span></a></li>
-                    <li><a href="upload.html" id="upload-link" class="btn-blue"><i class="fas fa-upload"></i><span>Upload</span></a></li>
-                    <li><a href="account.html" id="account-link" style="display: none;"><i class="fas fa-user"></i><span id="username-display">Account</span></a></li>
-                    <li><a href="#" id="logout-link" style="display: none;"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
-                </ul>
-            </nav>
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">ItemExchange</a>
         </div>
+        <nav>
+          <ul>
+            <li>
+              <a href="login.html" id="login-link"
+                ><i class="fas fa-sign-in-alt"></i><span>Login</span></a
+              >
+            </li>
+            <li>
+              <a href="register.html" id="register-link"
+                ><i class="fas fa-user-plus"></i><span>Register</span></a
+              >
+            </li>
+            <li>
+              <a href="upload.html" id="upload-link" class="btn-blue"
+                ><i class="fas fa-upload"></i><span>Upload</span></a
+              >
+            </li>
+            <li>
+              <a href="account.html" id="account-link" style="display: none"
+                ><i class="fas fa-user"></i
+                ><span id="username-display">Account</span></a
+              >
+            </li>
+            <li>
+              <a href="#" id="logout-link" style="display: none"
+                ><i class="fas fa-sign-out-alt"></i><span>Logout</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <div class="container">
-        <h1>Register</h1>
-        <form id="register-form">
-            <div id="register-error" style="display:none; color: red;"></div>
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password" required>
-            </div>
-            <button type="submit" class="btn">Register</button>
-        </form>
+      <h1>Register</h1>
+      <form id="register-form">
+        <div id="register-error" style="display: none; color: red"></div>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn">Register</button>
+      </form>
     </div>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Item Exchange. All rights reserved.</p>
-            <nav>
-                <ul>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </nav>
-            <div class="social">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
+      <div class="container">
+        <p>&copy; 2024 Item Exchange. All rights reserved.</p>
+        <nav>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

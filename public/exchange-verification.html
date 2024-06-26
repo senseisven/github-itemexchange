@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify Exchange Proposal</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js" defer></script>
+    <style>
+      .exchange-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px auto;
+        max-width: 1200px;
+      }
+
+      .item-container {
+        width: 45%;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      .item-container img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .item-container h3 {
+        text-align: center;
+        margin: 10px 0;
+      }
+
+      .item-container p {
+        text-align: center;
+        margin: 5px 0;
+      }
+
+      .btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">ItemExchange</a>
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <a href="login.html" id="login-link"
+                ><i class="fas fa-sign-in-alt"></i><span>Login</span></a
+              >
+            </li>
+            <li>
+              <a href="register.html" id="register-link"
+                ><i class="fas fa-user-plus"></i><span>Register</span></a
+              >
+            </li>
+            <li>
+              <a href="upload.html" id="upload-link" class="btn-blue"
+                ><i class="fas fa-upload"></i><span>Upload</span></a
+              >
+            </li>
+            <li>
+              <a href="account.html" id="account-link" style="display: none"
+                ><i class="fas fa-user"></i
+                ><span id="username-display">Account</span></a
+              >
+            </li>
+            <li>
+              <a href="#" id="logout-link" style="display: none"
+                ><i class="fas fa-sign-out-alt"></i><span>Logout</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <h1>Verify Exchange Proposal</h1>
+      <div class="exchange-container">
+        <div class="item-container" id="receive-item-container">
+          <h3>Item to Receive</h3>
+          <img id="receive-item-image" src="" alt="Item to receive" />
+          <p id="receive-item-title"></p>
+          <p id="receive-item-description"></p>
+        </div>
+        <div class="item-container" id="exchange-item-container">
+          <h3>Your Item</h3>
+          <select id="user-items">
+            <!-- Dynamically populated with user's items -->
+          </select>
+          <img id="exchange-item-image" src="" alt="Your item" />
+          <p id="exchange-item-title"></p>
+          <p id="exchange-item-description"></p>
+        </div>
+      </div>
+      <button id="send-proposal-button" class="btn">Send Proposal</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 Item Exchange. All rights reserved.</p>
+        <nav>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
