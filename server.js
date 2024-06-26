@@ -17,7 +17,17 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + "-" + file.originalname);
   },
 });
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit per file
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith("image/")) {
+      cb(null, true);
+    } else {
+      cb(new Error("Invalid file type, only images are allowed!"), false);
+    }
+  },
+}).array("itemImages", 10); // 10 images maximum
 
 mongoose.connect("mongodb://localhost/itemexchange", {
   useNewUrlParser: true,
@@ -29,7 +39,7 @@ const itemSchema = new mongoose.Schema({
   description: String,
   category: String,
   desiredItem: String,
-  images: [String],
+  images: [String], // Array of image URLs
   email: String,
 });
 
@@ -80,7 +90,7 @@ app.get("/item-details.html", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "item-details.html"));
 });
 
-app.post("/upload", upload.array("item-images", 10), async (req, res) => {
+app.post("/upload", upload, async (req, res) => {
   try {
     if (!req.session.user) {
       return res.status(403).send("Not authenticated");
@@ -134,9 +144,7 @@ app.get("/user-posts", async (req, res) => {
   }
   const userEmail = req.session.user.email;
   try {
-    console.log(`Fetching posts for email: ${userEmail}`);
     const userPosts = await Item.find({ email: userEmail });
-    console.log(`Found posts: ${JSON.stringify(userPosts)}`);
     res.json(userPosts);
   } catch (error) {
     console.error("Error fetching user posts:", error);
@@ -166,7 +174,6 @@ app.get("/user-items", async (req, res) => {
 
 app.post("/exchange-request", async (req, res) => {
   const { selectedItem, message, itemId } = req.body;
-  console.log("Exchange Request:", { selectedItem, message, itemId });
   res.json({ success: true, message: "Exchange request sent successfully!" });
 });
 

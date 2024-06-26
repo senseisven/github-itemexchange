@@ -13,22 +13,23 @@
         background-color: #f9f9f9;
       }
       .container.upload {
-        max-width: 65%; /* Make the container 20% smaller */
-        width: 100%; /* Ensure it spans the full width */
-        margin: 0 auto; /* Center the container */
-        padding: 40px; /* Increase padding */
+        max-width: 800px;
+        width: 100%;
+        margin: 20px auto;
+        padding: 40px;
         background-color: white;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
       h1 {
         text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
       }
       form {
         background-color: white;
         padding: 20px;
         border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
       .form-group {
         margin-bottom: 15px;
@@ -62,6 +63,52 @@
       .form-group button:hover {
         background-color: #218838;
       }
+      .images-preview-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+      .image-preview {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .image-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .image-preview button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .form-group input[type="file"] {
+        display: none;
+      }
+      .upload-label {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .upload-label:hover {
+        background-color: #0056b3;
+      }
     </style>
   </head>
   <body>
@@ -74,30 +121,30 @@
         <nav>
           <ul>
             <li>
-              <a href="login.html" id="login-link"
-                ><i class="fas fa-sign-in-alt"></i><span>Login</span></a
-              >
+              <a href="login.html" id="login-link">
+                <i class="fas fa-sign-in-alt"></i><span>Login</span>
+              </a>
             </li>
             <li>
-              <a href="register.html" id="register-link"
-                ><i class="fas fa-user-plus"></i><span>Register</span></a
-              >
+              <a href="register.html" id="register-link">
+                <i class="fas fa-user-plus"></i><span>Register</span>
+              </a>
             </li>
             <li>
-              <a href="upload.html" id="upload-link" class="btn-blue"
-                ><i class="fas fa-upload"></i><span>Upload</span></a
-              >
+              <a href="upload.html" id="upload-link" class="btn-blue">
+                <i class="fas fa-upload"></i><span>Upload</span>
+              </a>
             </li>
             <li>
-              <a href="account.html" id="account-link" style="display: none"
-                ><i class="fas fa-user"></i
-                ><span id="username-display">Account</span></a
-              >
+              <a href="account.html" id="account-link" style="display: none">
+                <i class="fas fa-user"></i
+                ><span id="username-display">Account</span>
+              </a>
             </li>
             <li>
-              <a href="#" id="logout-link" style="display: none"
-                ><i class="fas fa-sign-out-alt"></i><span>Logout</span></a
-              >
+              <a href="#" id="logout-link" style="display: none">
+                <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+              </a>
             </li>
           </ul>
         </nav>
@@ -135,14 +182,21 @@
           <input type="text" id="desired-item" name="desired-item" required />
         </div>
         <div class="form-group">
-          <label for="item-images">Images:</label>
+          <label class="upload-label" for="item-images">Choose Images</label>
           <input
             type="file"
             id="item-images"
-            name="item-images"
+            name="itemImages"
             multiple
+            accept="image/*"
             required
           />
+        </div>
+        <div class="form-group">
+          <div
+            class="images-preview-container"
+            id="images-preview-container"
+          ></div>
         </div>
         <div class="form-group">
           <button type="submit">Upload</button>
@@ -162,6 +216,84 @@
         </nav>
       </div>
     </footer>
-    <script src="js/script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const isLoggedIn = localStorage.getItem("token") === "loggedIn";
+        const username = localStorage.getItem("username");
+        const email = localStorage.getItem("email");
+
+        if (isLoggedIn && username) {
+          const accountLink = document.getElementById("account-link");
+          const usernameDisplay = document.getElementById("username-display");
+          if (accountLink && usernameDisplay) {
+            accountLink.style.display = "inline";
+            usernameDisplay.textContent = username;
+          }
+          document.getElementById("login-link").style.display = "none";
+          document.getElementById("register-link").style.display = "none";
+          document.getElementById("logout-link").style.display = "inline";
+        }
+
+        const logoutLink = document.getElementById("logout-link");
+        if (logoutLink) {
+          logoutLink.addEventListener("click", () => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("username");
+            localStorage.removeItem("email");
+            window.location.href = "index.html";
+          });
+        }
+
+        // Adding email to the upload form
+        const uploadForm = document.querySelector('form[action="/upload"]');
+        if (uploadForm) {
+          uploadForm.addEventListener("submit", (event) => {
+            const email = localStorage.getItem("email");
+            if (email) {
+              const emailInput = document.createElement("input");
+              emailInput.type = "hidden";
+              emailInput.name = "email";
+              emailInput.value = email;
+              uploadForm.appendChild(emailInput);
+            }
+          });
+        }
+
+        document
+          .getElementById("item-images")
+          .addEventListener("change", function (event) {
+            const previewContainer = document.getElementById(
+              "images-preview-container"
+            );
+            previewContainer.innerHTML = "";
+
+            for (let i = 0; i < event.target.files.length; i++) {
+              const file = event.target.files[i];
+              const reader = new FileReader();
+
+              reader.onload = function (e) {
+                const imagePreview = document.createElement("div");
+                imagePreview.classList.add("image-preview");
+
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                imagePreview.appendChild(img);
+
+                const removeButton = document.createElement("button");
+                removeButton.innerHTML = "&times;";
+                removeButton.addEventListener("click", () => {
+                  imagePreview.remove();
+                });
+
+                imagePreview.appendChild(removeButton);
+                previewContainer.appendChild(imagePreview);
+              };
+
+              reader.readAsDataURL(file);
+            }
+          });
+      });
+    </script>
   </body>
 </html>
